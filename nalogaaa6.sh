@@ -20,3 +20,7 @@ sudo apt-get install nginx -y
 sudo apt-get install net-tools
 
 sudo apt-get update
+sudo apt-get install ca-certificates
+sudo apt-get install curl
+sudo apt-get install gnupg
+sudo apt-get install lsb-release
