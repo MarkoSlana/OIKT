@@ -1,38 +1,39 @@
-mkdir Documents Desktop Downloads Pictures Videos 
-for i in {1..5}
+#!/bin/bash
+
+mkdir Destop
+mkdir Documents
+mkdir Downloads
+mkdir Videos
+mkdir Pictures
+
+for x in {1..5}
 do
-mkdir folder$i
+  mkdir folder$x
 done
 
-for i in 1 2 3 4 5
+for x in {1..5}
 do
-useradd -m --groups sudo user$i
+ sudo useradd -m --groups sudo uporabnik$x
 done
 
+sudo apt-get upgrade
+sudo apt update
+sudo apt install nginx
+sudo apt install git
+sudo apt-get update -y
+sudo apt-get install -y net-tools
 
+ sudo apt-get remove docker docker-engine docker.io containerd runc
 sudo apt-get update
-sudo apt-get upgrade -y
-sudo dpgk --configure -a
-
-sudo apt-get install ufw
-sudo apt-get install git
-sudo apt-get install nginx -y
-sudo apt-get install net-tools
-
-sudo apt-get update
-sudo apt-get install \
+ sudo apt-get install \
     ca-certificates \
     curl \
     gnupg \
     lsb-release
-
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
-echo \
+ sudo mkdir -p /etc/apt/keyrings
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-sudo apt-get update
-
+ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
